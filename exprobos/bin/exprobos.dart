@@ -25,7 +25,7 @@ void main() {
     robos.add([x, y, movimentos]);
   }
 
-  // Movimentos possíveis: N, S, L, O (Norte, Sul, Leste, Oeste)
+  
   Map<String, List<int>> direcoes = {
     'N': [-1, 0], // Norte: move uma linha para cima
     'S': [1, 0],  // Sul: move uma linha para baixo
@@ -33,7 +33,7 @@ void main() {
     'O': [0, -1]  // Oeste: move uma coluna para a esquerda
   };
 
-  // Processamento dos robôs
+  
   for (var robo in robos) {
     int x = robo[0];
     int y = robo[1];
@@ -51,7 +51,7 @@ void main() {
 
       // Verifica se a nova posição está dentro dos limites
       if (nx < 0 || ny < 0 || nx >= R || ny >= C) {
-        break; // Se o movimento for fora dos limites, o robô para
+        break;
       }
 
       // Verifica o tipo de terreno
@@ -59,17 +59,15 @@ void main() {
 
       // Se houver um obstáculo, o robô não pode se mover
       if (terrenoAtual == '#') {
-        break; // O robô para
+        break;
       }
 
-      // Se o terreno for lama, o movimento custa 2 de energia
       if (terrenoAtual == '@') {
         energia -= 2;
       } else {
         energia -= 1;
       }
 
-      // Se o robô ficar sem energia, ele para
       if (energia <= 0) {
         break;
       }
@@ -86,8 +84,7 @@ void main() {
           }
         }
 
-        // Se houver teletransportadores disponíveis, o robô é movido aleatoriamente
-        if (teletransportadores.isNotEmpty) {
+        if(teletransportadores.isNotEmpty) {
           Random random = Random();
           var destino = teletransportadores[random.nextInt(teletransportadores.length)];
           nx = destino[0];
@@ -100,7 +97,6 @@ void main() {
       y = ny;
     }
 
-    // Saída: posição final do robô
     print('($x, $y)');
   }
 }
